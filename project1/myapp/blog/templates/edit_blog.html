@@ -1,0 +1,12 @@
+{% extends 'partials/base.html' %}
+{% block title %}Edit Blog {% endblock %}
+
+  
+{% block content %}
+<h2>Edit Blogs</h2>
+<form method="POST" enctype="multipart/form-data" action=''> 
+{% csrf_token %}
+{{ form.as_p }}
+<button class="btn btn-success" type="submit">Edit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+  
+{% block content %}
+  <img src="{% static '/image/index.jpeg' %}">
+  <div class="row">
+  {% if latest_blog %}
+    <div class="col-md-4">
+        <h3>{{latest_blog.title}}</h3>
+        <span>{{latest_blog.created_date}}</span>
+        <p>{{latest_blog.description}}</p>
+        <strong>{{latest_blog.author}}</strong>
+    </div>
+  {% else %}
+  <strong>There is no latest blog</strong>
+  {% endif %}
+  
+  {% if last_viewed %}
+    <div class="col-md-4">
+        <h3>{{last_viewed.title}}</h3>
+        <span>{{last_viewed.created_date}}</span>
+        <p>{{last_viewed.description}}</p>
+        <strong>{{last_viewed.author}}</strong>
+    </div>
+  {% endif %}
+  </div>
+    
+    <div class="row">
+      {% for blog in blogs %}
+      <div class="col-md-4">
+      <a href="/blog/detail/{{blog.id}}/">  <h3>{{blog.title}}</h3></a>
+        <span>{{blog.created_date}}</span>
+        <p>{{blog.description}}</p>
+        <strong>{{blog.author}}</strong>
+      </div>
+      {% endfor %}
+      
+    </div>
+
+{% endblock%}
